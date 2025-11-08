@@ -1,20 +1,20 @@
-// src/app.module.ts
-import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { Module } from "@nestjs/common";
+import { ConfigModule } from "@nestjs/config";
+import { TypeOrmModule } from "@nestjs/typeorm";
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
+      // envFilePath: ".env",
     }),
     TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: process.env.DB_HOST || 'localhost',
-      port: parseInt(process.env.DB_PORT || '5432', 10),
-      username: process.env.DB_USERNAME || 'postgres',
-      password: process.env.DB_PASSWORD,  // مستقیم از env
-      database: process.env.DB_DATABASE || 'todoapp',
+      type: "postgres",
+      host: "host.docker.internal",
+      port: 5432,
+      username: "todo_user",
+      password: "todo_pass",
+      database: "todo_db",
       entities: [],
       synchronize: true,
       autoLoadEntities: true,
