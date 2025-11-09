@@ -2,7 +2,7 @@ import {Entity,Column,PrimaryGeneratedColumn} from "typeorm";
 
 
 @Entity()
-export class Todos{
+export class Todo{
     @PrimaryGeneratedColumn()
     id:number;
 

@@ -1,16 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import {Repository } from 'typeorm';
-import { Todos } from './todo.entity';   
+import { Todo } from './todo.entity';   
 
 
 
 @Injectable()
 export class TodoService {
-    constructor( @InjectRepository(Todos)
-    private readonly todoRepository:Repository<Todos>){}
+    constructor( @InjectRepository(Todo)
+    private readonly todoRepository:Repository<Todo>){}
    
-    async findAllTodos(): Promise<Todos[]> {
+    async findAllTodos(): Promise<Todo[]> {
         try{
            const allTodos = await this.todoRepository.find();
            if(allTodos.length === 0){
@@ -23,6 +23,7 @@ export class TodoService {
            return filterTodo;
                 }catch(error){
             console.log(error)
+            return [];
         }
     }
 }

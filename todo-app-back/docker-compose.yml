@@ -1,7 +1,20 @@
 version: '3'
+
 services:
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"  # پورت 5050 برای دسترسی به pgAdmin
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+
   postgres:
     image: postgres:15
+    container_name: todo-app-back-postgres-1
     environment:
       POSTGRES_USER: todo_user
       POSTGRES_PASSWORD: todo_pass
@@ -10,5 +23,8 @@ services:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+
 volumes:
+  pgadmin_data:
   pgdata:
+
