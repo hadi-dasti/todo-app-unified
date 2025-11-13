@@ -1,9 +1,6 @@
-// src/app.module.ts
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { TodoListController } from "./todos/todo.controller";
-import { TodoService } from "./todos/todo.service";
 import { Todo } from "./todos/todo.entity";
 import { TodoModule } from "./todos/todo.module";
 
@@ -24,9 +21,8 @@ import { TodoModule } from "./todos/todo.module";
       synchronize: true,
       autoLoadEntities: true,
     }),
-    TodoModule
+    TodoModule,
   ],
-  controllers: [TodoListController],
-  providers: [TodoService],
 })
 export class AppModule {}
+

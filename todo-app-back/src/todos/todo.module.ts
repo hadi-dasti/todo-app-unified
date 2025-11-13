@@ -4,11 +4,9 @@ import { TodoListController } from "./todo.controller";
 import { TodoService } from "./todo.service";
 import { Todo } from "./todo.entity";
 
-
 @Module({
-   imports:[TypeOrmModule.forFeature([Todo])],
-   providers :[TodoService],
-   controllers :[TodoListController]
+  imports: [TypeOrmModule.forFeature([Todo])],
+  providers: [TodoService],
+  controllers: [TodoListController],
 })
-
-export class TodoModule{}
+export class TodoModule {}
