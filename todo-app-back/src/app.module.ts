@@ -3,6 +3,7 @@ import { ConfigModule } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { Todo } from "./todos/todo.entity";
 import { TodoModule } from "./todos/todo.module";
+import { UsersModule } from './users/user.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { TodoModule } from "./todos/todo.module";
       autoLoadEntities: true,
     }),
     TodoModule,
+    UsersModule,
   ],
 })
 export class AppModule {}
