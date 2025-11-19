@@ -1,4 +1,6 @@
-import { Entity,Column, PrimaryGeneratedColumn } from "typeorm";
+import { Todo } from "src/todos/todo.entity";
+import { Entity,Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
+import { Exclude } from "class-transformer";
 
 
 
@@ -11,8 +13,12 @@ export class User{
     username:string;
 
     @Column()
+    @Exclude()
     password:string;
 
     @Column()
     email : string;
+
+    @OneToMany(()=>Todo, todo=>todo.user)
+    todos: Todo[];
 }
