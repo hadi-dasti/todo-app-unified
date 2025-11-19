@@ -3,7 +3,11 @@ import { ConfigModule } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { Todo } from "./todos/todo.entity";
 import { TodoModule } from "./todos/todo.module";
-import { UsersModule } from './users/user.module';
+import { UserModule } from './users/user.module';
+import { User } from "./users/user.entity";
+
+
+
 
 @Module({
   imports: [
@@ -18,12 +22,12 @@ import { UsersModule } from './users/user.module';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-      entities: [Todo],
+      entities: [Todo, User],
       synchronize: true,
       autoLoadEntities: true,
     }),
     TodoModule,
-    UsersModule,
+    UserModule,
   ],
 })
 export class AppModule {}
